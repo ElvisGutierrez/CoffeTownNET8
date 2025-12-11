@@ -19,14 +19,16 @@ Realizar un pedido
 
 Administración (CRUDs)
 
- - Productos
+ - Categorías
 <div align="center"> <img src="https://github.com/user-attachments/assets/63ba6693-fd6e-477b-828a-4968448cb5b9" width="700"/> </div>
 
- - Categorías
+ - Productos
 <div align="center"> <img src="https://github.com/user-attachments/assets/cc1ed992-5e16-456e-ae64-3937d3cc3f54" width="700"/> </div>
 
- - Usuarios
+ - Promociones/Slider
 <div align="center"> <img src="https://github.com/user-attachments/assets/da2aafba-b96a-436f-af90-fe3d621af467" width="700"/> </div>
+
+<div align="center"> <img  src="https://github.com/user-attachments/assets/ec95eacd-9ffd-43e0-9141-a77da781906e" width="700"/> </div>
 
  - Gestión de pedidos
 <div align="center"> <img src="https://github.com/user-attachments/assets/edec166c-a96d-4621-b530-66ee15f5860d" width="700"/> </div>
