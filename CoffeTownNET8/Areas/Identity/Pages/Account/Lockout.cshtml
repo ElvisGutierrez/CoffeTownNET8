@@ -1,0 +1,17 @@
+﻿@page
+@model LockoutModel
+@{
+    ViewData["Title"] = "Usuario bloqueado";
+}
+
+<style>
+    header {
+        padding: 350px;
+        text-align: center;
+    }
+</style>
+
+<header class="d-flex flex-column align-items-center">
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger text-center">Esta Cuenta está bloqueada, por favor intenta más tarde.</p>
+</header>

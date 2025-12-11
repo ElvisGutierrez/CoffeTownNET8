@@ -1,0 +1,88 @@
+﻿@model CoffeTownNET8.Modelos.Slider
+
+@{
+    ViewData["Title"] = "Editar Slider";
+}
+
+<div style="padding-top: 130px;">
+    <div class="container">
+        <form method="post" asp-action="Edit" enctype="multipart/form-data">
+            <!--Enviar id como campo oculto-->
+
+            <div class="card">
+                <div class="card-body">
+                    <h2 class=" card-header text-center" style="background-color: transparent">Editar Slider</h2>
+                    <div class="row  px-2 mt-2">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!-- Columna para la imagen -->
+                        <div class="col-4">
+                            <label>Imagen Actual</label>
+                            <img src="@Model.UrlImagen" id="currentImage" class="img-fluid" style="border-radius:5px; border:1px solid #bbb9b9" />
+                            <label class="mt-2">Nueva Imagen Seleccionada</label>
+                            <img id="newImagePreview" class="img-fluid" style="border-radius:5px; border:1px solid #bbb9b9; display: none;" />
+                        </div>
+                        <!-- Columna para el formulario -->
+                        <div class="col-md-8 mt-4 d-flex flex-column justify-content-between">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Nombre" class="control-label"></label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del slider" />
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Estado" class="control-label"></label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="checkbox" asp-for="Estado" />
+                                    <span asp-validation-for="Estado" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="UrlImagen"></label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                                    <span asp-validation-for="UrlImagen" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-auto">
+                                <div class="col">
+                                    <partial name="_VistaEditarVolver" />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById('subidaArchivo').addEventListener('change', function (event) {
+        const input = event.target;
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            const dataURL = reader.result;
+            const newImagePreview = document.getElementById('newImagePreview');
+            newImagePreview.src = dataURL;
+            newImagePreview.style.display = 'block';
+        };
+
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+</script>
+

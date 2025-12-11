@@ -1,0 +1,92 @@
+﻿@model CoffeTownNET8.Modelos.ViewModels.ProductoVM
+
+@{
+    ViewData["Title"] = "Crear Producto";
+}
+
+<div style="padding-top: 130px;">
+    <div class="container">
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class=" card-header text-center" style="background-color: transparent">Crear nuevo Producto</h2>
+                    <div class="row  px-2 mt-2">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!-- Columna para la imagen -->
+                        <div class="col-md-6 mt-4">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Producto.Nombre" class="control-label"></label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="Producto.Nombre" class="form-control" placeholder="Ingrese un nombre para el producto" />
+                                    <span asp-validation-for="Producto.Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Producto.Descripcion" class="control-label"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    <textarea asp-for="Producto.Descripcion" class="form-control " id="exampleTextarea"></textarea>
+                                    <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna para el formulario -->
+                        <div class="col-md-6 mt-4 d-flex flex-column justify-content-between">
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Producto.Precio" class="control-label"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    <input asp-for="Producto.Precio" class="form-control " step="0.01" placeholder="Ingrese el orden" />
+                                    <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Producto.CategoriaId"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    @Html.DropDownListFor(m => m.Producto.CategoriaId, Model.ListaCategorias,
+                                             "Seleccione una categoría", new { @class = "form-control" })
+                                    <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Producto.UrlImagen" class="control-label"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group row mt-auto">
+                                <div class="col">
+                                    <partial name="_VistaCrearVolver" />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.1/tinymce.min.js" integrity="sha512-KGtsnWohFUg0oksKq7p7eDgA1Rw2nBfqhGJn463/rGhtUY825dBqGexj8eP04LwfnsSW6dNAHAlOqKJKquHsnw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format',
+            height: 250
+        });
+    </script>
+}

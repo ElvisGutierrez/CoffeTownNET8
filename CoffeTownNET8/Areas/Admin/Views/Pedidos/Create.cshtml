@@ -1,0 +1,64 @@
+﻿@model CoffeTownNET8.Modelos.ViewModels.PedidoVM
+
+@{
+    ViewData["Title"] = "Crear pedido";
+}
+
+<div style="padding-top: 130px;">
+    <div class="container">
+        <form method="post" asp-action="Create">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class=" card-header text-center" style="background-color: transparent">Crear un nuevo pedido</h2>
+                    <div class="row  px-2 mt-2">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!-- Columna para la imagen -->
+                        <div class="col-md-4">
+                            <img src="~/img/tazacafe-crear.png" alt="TazaCafe" class="img-fluid" />
+                        </div>
+
+                        <!-- Columna para el formulario -->
+                        <div class="col-md-8 mt-4 d-flex flex-column justify-content-between">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Pedido.Nombre" class="control-label"></label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="Pedido.Nombre" class="form-control" placeholder="Ingrese un nombre para identificar el pedido" />
+                                    <span asp-validation-for="Pedido.Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Pedido.ProductoId"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    @Html.DropDownListFor(m => m.Pedido.ProductoId, Model.ListaProductos,
+                                             "Seleccione un producto", new { @class = "form-control" })
+                                    <span asp-validation-for="Pedido.ProductoId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Pedido.Cantidad" class="control-label"></label>
+                                </div>
+                                <div class="col-8 ">
+                                    <input asp-for="Pedido.Cantidad" class="form-control " placeholder="Ingrese la cantidad" />
+                                    <span asp-validation-for="Pedido.Cantidad" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-auto">
+                                <div class="col">
+                                    <partial name="_VistaCrearVolver" />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

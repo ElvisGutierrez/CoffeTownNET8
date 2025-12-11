@@ -1,0 +1,22 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Acceso denegado";
+}
+
+<style>
+    header {
+        padding: 350px;
+        text-align: center;
+    }
+</style>
+
+<div style="padding-top: 130px">
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+        <img src="~/img/accesodenegado.png" alt="Denegado" height="100px" width="100px" />
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+        <p class="text-danger">Tú no tienes acceso a esta página.</p>
+    </div>
+</div>
+    
+

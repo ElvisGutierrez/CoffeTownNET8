@@ -1,0 +1,108 @@
+﻿@using CoffeTownNET8.Utilidades
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CoffeTown</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap5.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/CoffeTownNET8.styles.css" asp-append-version="true" /> *@
+
+    <!--Css todos-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.7/sweetalert2.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+<body class="hold-transition layout-top-nav layout-navbar-fixed layout-footer-fixed" style="background-color: white">
+    <div class="wrapper">
+        <div class="preloader flex-column justify-content-center align-items-center" style="background-color: #2b2b2b">
+            <img class="animation__wobble img-circle" src="~/img/Logo_CoffeeTown.png" alt="LogoCoffeTown" height="250" width="250">
+        </div>
+        <header class="main-header pt-2 px-2" style="background-color: transparent; border: none !important;">
+            <nav class="layout-navbar-fixed navbar navbar-expand-lg p-3" style="background-color: #895D58" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="mx-3" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/img/Logo_CoffeeTown.png" alt="CoffeTown" height="50" width="50" />
+                    </a>
+                    <a class="navbar-brand" style="font-size: 30px" asp-area="" asp-controller="Home" asp-action="Index">CoffeTown</a>
+                    @if (User.IsInRole(CNT.Administrador))
+                    {
+                        <div class="separator-vertical mx-3" style="background-color: #fff; width: 2px; height: 25px;"></div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    }
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav me-auto">
+                            <!--Autorizacion-->
+                            @if(User.IsInRole(CNT.Administrador)){
+                                <li class="nav-item dropdown">
+                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                        <button type="button" class="btn btn-secondary" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">Menú</button>
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Categorias" asp-action="Index"><i class="mr-4 fas fa-th-large"></i>Categorías</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Productos" asp-action="Index"><i class="mr-4 nav-icon fas fa-box-open"></i>Productos</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Sliders" asp-action="Index"><i class="mr-4 fa-solid fa-dollar-sign"></i>Promociones</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Pedidos" asp-action="Index"><i class="mr-4 fa-solid fa-mug-hot"></i>Pedidos</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Ventas" asp-action="Index"><i class="mr-4 fas fa-cash-register"></i>Ventas</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="text-white dropdown-item" asp-area="Admin" asp-controller="Usuarios" asp-action="Index"><i class="mr-4 fa-solid fa-user"></i>Usuarios</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+
+            <!--Aquí vista parcial slider-->
+            @if (ViewBag.IsHome == true)
+            {
+               // <partial name="_Slider" />
+            }
+
+        </header>
+        <div>
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="main-footer" style="background-color: #895D58">
+            <div class="container" style="color: white">
+                &copy; 2024 - CoffeTownNET8 - @ViewData["Title"]
+            </div>
+        </footer>
+    </div>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Js plugins-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.7/sweetalert2.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

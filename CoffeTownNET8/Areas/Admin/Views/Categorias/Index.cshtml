@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Lista de tipos de café";
+}
+
+
+<div style="padding-top: 130px">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h1 class="text-primary">Lista de tipos de Café</h1>
+            </div>
+            <div class="col-4 text-right">
+                <a asp-action="Create" class="btn btn-secondary" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">Crear nuevo tipo de café<i class="fa-solid fa-plus mx-2"></i></a>
+            </div>
+        </div>
+        <br />
+        <table id="tblCategorias" class="table table-secondary table-hover table-striped table-bordered" style="width: 100%; ">
+            <thead>
+                <tr>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Orden</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/categoria.js"></script>
+}

@@ -1,0 +1,211 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Estilos para la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+    background-color: transparent; /* Color de fondo */
+}
+
+/* Estilos para el track (la barra en sí) */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Color del fondo del track */
+}
+
+/* Estilos para el thumb (el indicador de posición) */
+::-webkit-scrollbar-thumb {
+    background-color: #895d58; /* Color del thumb */
+    border-radius: 10px; /* Radio de borde del thumb */
+    border: 2px solid transparent; /* Borde del thumb */
+    background-clip: content-box; /* Clip de fondo */
+}
+
+    /* Estilos para el thumb al pasar el mouse sobre él */
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #555; /* Color del thumb al pasar el mouse sobre él */
+    }
+
+.slider-img {
+    height: 470px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover;
+}
+
+
+.producto-img {
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    width: 100%;
+    object-fit: cover;
+}
+
+.slider-img-cell img {
+    width: 120px; /* Ajusta el ancho según tus necesidades */
+    height: 60px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover;
+    border-radius: 5px; /* Opcional: agrega bordes redondeados */
+    border: 1px solid #bbb9b9; /* Opcional: agrega un borde */
+}
+
+#titulo {
+    font-size: 8.5em;
+    background: linear-gradient( to right, #674845 15%, #895d58 20%, #966860 30%, #c9b3a8 50%, #966860 70%, #895d58 80%, #674845 95%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite
+}
+
+#titulo2 {
+    font-size: 3.5em;
+    background: linear-gradient( to right, #674845 15%, #895d58 20%, #966860 30%, #c9b3a8 50%, #966860 70%, #895d58 80%, #674845 95%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 6s linear infinite
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+#dynamic-text {
+    border-right: 2px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#welcome-message {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #555;
+}
+
+.image-container {
+    perspective: 1000px; /* Ajusta la perspectiva para mejorar el efecto 3D */
+}
+
+.tilt-image {
+    transition: transform 0.2s;
+    transform-style: preserve-3d;
+}
+
+    .tilt-image:hover {
+        transform: rotateY(15deg) rotateX(15deg);
+    }
+
+
+#cont-titulo {
+    position: relative;
+    background-image: radial-gradient(circle at 13% 47%, rgba(230,204,200, 0.44) 0%, rgba(230,204,200, 0.44) 25%,transparent 25%, transparent 100%), radial-gradient(circle at 28% 63%, rgb(230,204,200) 0%, rgb(230,204,200) 16%,transparent 16%, transparent 100%), radial-gradient(circle at 81% 56%, rgb(230,204,200) 0%, rgb(230,204,200) 12%,transparent 12%, transparent 100%), radial-gradient(circle at 26% 48%, rgba(60,60,60, 0.11) 0%, rgba(60,60,60, 0.11) 6%,transparent 6%, transparent 100%), radial-gradient(circle at 97% 17%, rgba(230,204,200, 0.44) 0%, rgba(230,204,200, 0.44) 56%,transparent 56%, transparent 100%), radial-gradient(circle at 50% 100%, rgba(230,204,200, 0.44) 0%, rgba(230,204,200, 0.44) 36%,transparent 36%, transparent 100%), radial-gradient(circle at 55% 52%, rgba(230,204,200, 0.44) 0%, rgba(230,204,200, 0.44) 6%,transparent 6%, transparent 100%), linear-gradient(90deg, rgba(230,204,200, 0.44),rgba(230,204,200, 0.44));
+}
+
+#cont-titulo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px; /* Ajusta esta altura según sea necesario */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(252, 252, 252, 1));
+    pointer-events: none;
+}
+
+#cont-2 {
+    height: 600px;
+    position: relative;
+    background-image: radial-gradient(circle at 13% 47%, rgba(140, 140, 140,0.03) 0%, rgba(140, 140, 140,0.03) 25%,transparent 25%, transparent 100%),radial-gradient(circle at 28% 63%, rgba(143, 143, 143,0.03) 0%, rgba(143, 143, 143,0.03) 16%,transparent 16%, transparent 100%),radial-gradient(circle at 81% 56%, rgba(65, 65, 65,0.03) 0%, rgba(65, 65, 65,0.03) 12%,transparent 12%, transparent 100%),radial-gradient(circle at 26% 48%, rgba(60, 60, 60,0.03) 0%, rgba(60, 60, 60,0.03) 6%,transparent 6%, transparent 100%),radial-gradient(circle at 97% 17%, rgba(150, 150, 150,0.03) 0%, rgba(150, 150, 150,0.03) 56%,transparent 56%, transparent 100%),radial-gradient(circle at 50% 100%, rgba(25, 25, 25,0.03) 0%, rgba(25, 25, 25,0.03) 36%,transparent 36%, transparent 100%),radial-gradient(circle at 55% 52%, rgba(69, 69, 69,0.03) 0%, rgba(69, 69, 69,0.03) 6%,transparent 6%, transparent 100%),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+}
+
+    #cont-2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px; /* Ajusta esta altura según sea necesario */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 230, 221, 1));
+        pointer-events: none;
+    }
+
+#cont-3 {
+    background-color: #ffe6dd;
+}
+
+#cont-4 {
+    background-color: #ffe6dd;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.card-producto {
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+    .card-producto:hover {
+        transform: scale(1.05); /* Efecto de zoom */
+        box-shadow: 0 4px 20px rgba(213, 144, 137, 0.5); /* Efecto de sombra */
+    }
+
+
+.floating-btn {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    background-color: #c96442;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    box-shadow: 0 0 0 0.1rem black; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    animation: pulse 2s infinite;
+}
+
+    .floating-btn:hover {
+        background-color: #484848;
+    }
+
+    .floating-btn i {
+        font-size: 24px;
+    }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

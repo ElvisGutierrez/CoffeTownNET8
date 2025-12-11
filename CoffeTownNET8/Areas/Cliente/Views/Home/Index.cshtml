@@ -1,0 +1,118 @@
+﻿@model CoffeTownNET8.Modelos.ViewModels.HomeVM
+@using CoffeTownNET8.Utilidades
+
+@{
+    ViewData["Title"] = "Inicio";
+
+}
+
+@if (TempData["PedidoCreado"] != null)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: '¡Éxito!',
+                text: '@TempData["PedidoCreado"]',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
+        });
+    </script>
+}
+
+<div style="height: 650px; padding-top: 130px;" id="cont-titulo">
+    <div class="container">
+        <div class="row" style="height: 470px">
+            <div class="col-sm-8 d-flex justify-content-center flex-column">
+                <h1 id="titulo">CoffeTown</h1>
+                <h2>¡<span id="dynamic-text"></span>!</h2>
+                <p id="welcome-message">Bienvenido a CoffeTown, donde cada taza es una experiencia única y auténtica. ¡Disfruta de nuestros productos de alta calidad y déjate sorprender por nuestros sabores excepcionales!</p>
+            </div>
+            <div class="col-sm-4 image-container">
+                <img src="~/img/presentacion.png" alt="TazaCafe" class="img-fluid tilt-image" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="cont-2" style="padding-top: 70px">
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+        <div>
+            <h1 id="titulo2">Aprovecha las mejores Ofertas</h1>
+        </div>
+        <div style="height: 400px; width: 400px">
+            <img src="~/img/cafeNegro.png" alt="TazaCafe" class="img-fluid" />
+        </div>
+    </div>
+</div>
+
+<div id="cont-3" style="padding-top: 70px; padding-bottom: 50px">
+    <div class="container">
+        <div id="sliderImagenes" class="carousel slide d-flex justify-content-center align-items-center">
+            <div class="carousel-inner">
+                @{
+                    int cont = 0;
+                }
+
+                @foreach (var slider in Model.Sliders)
+                {
+                    var itemDinamico = cont++ == 0 ? "active" : "";
+
+                    @if (slider.Estado == true)
+                    {
+
+                        <div class="carousel-item @itemDinamico">
+                            <img src="@Url.Content(slider.UrlImagen)" class="d-block img-thumbnail w-100 slider-img">
+                        </div>
+                    }
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#sliderImagenes" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#sliderImagenes" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="cont-4">
+    <div class="container" >
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <h1 id="titulo2">¡Productos disponibles!</h1>
+        </div>
+        @if (Model.ListProductos.Count() > 0)
+        {
+            <div class="row mt-5">
+                @foreach (var producto in Model.ListProductos.OrderBy(o => o.Id))
+                {
+                    <div class="col-4">
+                        <div class="card card-producto">
+                            <h5 class="text-center card-header">@producto.Nombre</h5>
+                            <div class="card-body">
+                                <img src="@producto.UrlImagen" class="img-thumbnail producto-img" />
+                                <a asp-action="Detalle" class="btn btn-secondary form-control mt-3" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'" asp-route-id="@producto.Id">
+                                    Más información
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No hay artículos</p>
+        }
+    </div>
+</div>
+
+
+@if(User.IsInRole(CNT.Administrador) || User.IsInRole(CNT.Cliente)){
+    <a asp-action="Pedido" class="floating-btn btn mt-2" data-toggle="tooltip" data-placement="left" title="Realizar pedido" style="background-color: #c96442; color: white; font-size: 16px; outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </a>
+}

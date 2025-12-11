@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Lista de ventas";
+}
+
+
+<div style="padding-top: 130px">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h1 class="text-primary">Lista de Ventas</h1>
+            </div>
+            <div class="col-4 text-right">
+                <a href="/Admin/Pedidos/Index" class="btn btn-secondary" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">Ver mas pedidos<i class="fa fa-eye mx-2" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <br />
+        <table id="tblVentas" class="table table-secondary table-hover table-striped table-bordered" style="width: 100%; ">
+            <thead>
+                <tr>
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Producto</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Monto total</th>
+                </tr>
+            </thead>
+        </table>
+        <form asp-action="ventaPDF" asp-controller="PDF">
+            <button style="background-color: #895d58" class="btn text-white" type="submit"><i class="fa-solid fa-file-pdf"></i>&nbspDescargar PDF</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/ventas.js"></script>
+}
+

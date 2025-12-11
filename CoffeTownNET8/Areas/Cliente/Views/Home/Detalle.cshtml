@@ -1,0 +1,25 @@
+﻿@model CoffeTownNET8.Modelos.Producto
+
+@{
+    ViewData["Title"] = "Detalle Producto";
+
+}
+
+<div style="padding-top: 130px">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card" style="width: 50%">
+            <h1 class="text-primary text-center card-header">@Model.Nombre</h1>
+            <div class="row">
+                <div class="col-7">
+                    <img src="@Model.UrlImagen" class="img-thumbnail img-fluid producto-img" />
+                </div>
+                <div class="col-5">
+                    <p class="text-secondary">@Html.Raw(Model.Descripcion)</p>
+                    <p class="text-secondary">Precio: $@Model.Precio.ToString()</p>
+                    <a asp-action="Index" class="btn btn-secondary mt-auto" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">Volver atrás</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

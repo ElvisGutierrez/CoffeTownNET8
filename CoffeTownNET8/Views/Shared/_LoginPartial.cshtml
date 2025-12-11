@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CoffeTownNET8.Modelos
+@inject SignInManager<AplicationUser> SignInManager
+@inject UserManager<AplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+
+                <button class="btn btn-secondary my-2 my-sm-0" type="button" style="outline: none; margin-right: 15px; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">
+                    Hola! @User.Identity?.Name!
+                </button>
+        </a>
+    </li>
+    <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn btn-secondary my-2 my-sm-0" type="button" style="outline: none; margin-right: 15px; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">
+                    Cerrar sesión
+                </button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+            <a class="text-white" style="text-decoration: none" asp-area="Identity" asp-page="/Account/Register">
+                <button class="btn btn-secondary my-2 my-sm-0" type="button" style="outline: none; margin-right: 15px; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">
+                    Registrarse
+                    <i class="mx-2 fas fa-envelope"></i>
+                </button>
+            </a>
+            
+    </li>
+    <li class="nav-item">
+            <a class="text-white" style="text-decoration: none" asp-area="Identity" asp-page="/Account/Login">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">
+                    Acceder
+                    <i class="mx-2 fas fa-sign-in-alt"></i>
+                </button>
+            </a>
+    </li>
+}
+</ul>

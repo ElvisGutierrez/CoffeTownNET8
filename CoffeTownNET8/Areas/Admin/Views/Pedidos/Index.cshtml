@@ -1,0 +1,24 @@
+﻿
+
+<div style="padding-top: 130px;">
+    <div class="container">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-8">
+                    <h1 class="text-primary">Lista de Pedidos</h1>
+                </div>
+                <div class="col-4 text-right">
+                    <a asp-action="Create" class="btn btn-secondary" style="outline: none; box-shadow: 0 0 0 0.1rem black;" onFocus="this.style.boxShadow = '0 0 0 0.2rem black)'">Crear nuevo Pedido<i class="fa-solid fa-plus mx-2"></i></a>
+                </div>
+            </div>
+            <br />
+            <div id="cardContainer" class="row">
+                <!-- Las tarjetas de productos se cargarán aquí -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/pedidos.js"></script>
+}
